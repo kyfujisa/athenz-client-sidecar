@@ -7,25 +7,28 @@
 Table of Contents
 =================
 
-- [Athenz Client Sidecar for Kubernetes](#athenz-client-sidecar-for-kubernetes)
-  - [What is Athenz client sidecar?](#what-is-athenz-client-sidecar)
-    - [Get Athenz N-Token from client sidecar](#get-athenz-n-token-from-client-sidecar)
-    - [Get Athenz Role Token from client sidecar](#get-athenz-role-token-from-client-sidecar)
-    - [Proxy HTTP request (add corresponding Athenz authorization token)](#proxy-http-request-add-corresponding-athenz-authorization-token)
-  - [Use Case](#use-case)
-  - [Specification](#specification)
-    - [Get N-token from Athenz through client sidecar](#get-n-token-from-athenz-through-client-sidecar)
-    - [Get role token from Athenz through client sidecar](#get-role-token-from-athenz-through-client-sidecar)
-    - [Proxy requests and append N-token authentication header](#proxy-requests-and-append-n-token-authentication-header)
-    - [Proxy requests and append role token authentication header](#proxy-requests-and-append-role-token-authentication-header)
-  - [Configuration](#configuration)
-  - [Developer Guide](#developer-guide)
-    - [Example code](#example-code)
-      - [Get N-token from client sidecar](#get-n-token-from-client-sidecar)
-      - [Get role token from client sidecar](#get-role-token-from-client-sidecar)
-      - [Proxy request through client sidecar (append N-token)](#proxy-request-through-client-sidecar-append-n-token)
-      - [Proxy request through client sidecar (append role token)](#proxy-request-through-client-sidecar-append-role-token)
-  - [Deployment Procedure](#deployment-procedure)
+- [Table of Contents](#table-of-contents)
+    - [What is Athenz client sidecar?](#what-is-athenz-client-sidecar)
+        - [Get Athenz N-Token from client sidecar](#get-athenz-n-token-from-client-sidecar)
+        - [Get Athenz Role Token from client sidecar](#get-athenz-role-token-from-client-sidecar)
+        - [Proxy HTTP request (add corresponding Athenz authorization token)](#proxy-http-request-add-corresponding-athenz-authorization-token)
+    - [Use Case](#use-case)
+    - [Specification](#specification)
+        - [Get N-token from Athenz through client sidecar](#get-n-token-from-athenz-through-client-sidecar)
+        - [Get role token from Athenz through client sidecar](#get-role-token-from-athenz-through-client-sidecar)
+        - [Proxy requests and append N-token authentication header](#proxy-requests-and-append-n-token-authentication-header)
+        - [Proxy requests and append role token authentication header](#proxy-requests-and-append-role-token-authentication-header)
+    - [Configuration](#configuration)
+    - [Developer Guide](#developer-guide)
+        - [Example code](#example-code)
+            - [Get N-token from client sidecar](#get-n-token-from-client-sidecar)
+            - [Get role token from client sidecar](#get-role-token-from-client-sidecar)
+            - [Proxy request through client sidecar (append N-token)](#proxy-request-through-client-sidecar-append-n-token)
+            - [Proxy request through client sidecar (append role token)](#proxy-request-through-client-sidecar-append-role-token)
+    - [Deployment Procedure](#deployment-procedure)
+    - [License](#license)
+    - [Contributor License Agreement](#contributor-license-agreement)
+    - [Authors](#authors)
 
 ## What is Athenz client sidecar?
 
@@ -89,13 +92,13 @@ User can also use the reverse proxy endpoint to proxy the request to another ser
 - Only accept HTTP POST request.
 - Request body must contains below information in JSON format.
 
-| Name                | Description                                | Required? | Example           |
-| ------------------- | ------------------------------------------ | --------- | ----------------- |
-| domain              | Role token domain name                     | Yes       | domain.shopping   |
-| role                | Role token role name                       | No        | users             |
-| proxy_for_principal | Role token proxyForPrincipal name          | No        | proxyForPrincipal |
-| min_expiry          | Role token minimal expiry time (in second) | No        | 100               |
-| max_expiry          | Role token maximum expiry time (in second) | No        | 1000              |
+| Name                | Description                                 | Required? | Example           |
+| ------------------- | ------------------------------------------- | --------- | ----------------- |
+| domain              | Role token domain name                      | Yes       | domain.shopping   |
+| role                | Role token role name (comma separated list) | No        | users             |
+| proxy_for_principal | Role token proxyForPrincipal name           | No        | proxyForPrincipal |
+| min_expiry          | Role token minimal expiry time (in second)  | No        | 100               |
+| max_expiry          | Role token maximum expiry time (in second)  | No        | 1000              |
 
 Example:
 
